@@ -1,4 +1,7 @@
 #include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 const int MIN_LS = 5, MAX_LS = 20;
@@ -125,18 +128,32 @@ public:
 	}
 	void print() {
 		Node* current = head;
-		if (!current) return;
+		if (!current) {
+            cout << "List is empty." << endl;
+            return;
+        }
 		while (current) {
-			cout << current->data << " ";
+			cout << "  "
+                 << current->data.getName()
+                 << " (" << current->data.getColor()
+                 << ", " << current->data.getAge()
+                 << ")" << endl;
 			current = current->next;
 		}
 		cout << endl;
 	}
 	void print_reverse() {
 		Node* current = tail;
-		if (!current) return;
+		if (!current) {
+            cout << "List is empty." << endl;
+            return;
+        }
 		while (current) {
-			cout << current->data << " ";
+			cout << "  "
+                 << current->data.getName()
+                 << " (" << current->data.getColor()
+                 << ", " << current->data.getAge()
+                 << ")" << endl;
 			current = current->prev;
 		}
 		cout << endl;
@@ -162,9 +179,9 @@ int main() {
 		list.push_back(myGoat);
     }
 		
-	cout << "Forward: ";
+	cout << "Forward:\n";
 	list.print();
-	cout << "Backward: ";
+	cout << "Backward:\n";
 	list.print_reverse();
 	
 	return 0;
